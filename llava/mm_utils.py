@@ -203,13 +203,6 @@ def tokenizer_image_token(prompt, tokenizer, image_token_index=IMAGE_TOKEN_INDEX
 
     for x in insert_separator(prompt_chunks, [image_token_index] * (offset + 1)):
         input_ids.extend(x[offset:])
-    # _chunks = insert_separator(  prompt_chunks, [image_token_index] * (offset + 1)  ) = 
-    # [[1, 319, 13563, 1546, 263, 12758, 5199, 322, 385, ...], # 다음을 설명해줄래? 
-    # [-200, -200], # 이미지
-    # [1, 29871, 13, 1184, 29894, 680, 263, 11473, 6139, ...]] # Caption GT
-    
-    # input_ids = [1, 319, 13563, 1546, 263, 12758, 5199, 322, 385, -200, 29871, 13, 1184, 29894, 680, ...] 
-    
     # -200 in _chunks[1] and 1 in _chunks[2] are deleted.
 
     if return_tensors is not None:

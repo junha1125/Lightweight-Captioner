@@ -3,7 +3,7 @@ import torch.nn as nn
 from typing import Mapping, Any
 import re
 
-# transformers의 DETR 관련 모듈
+# DETR modules from transformers.
 from transformers.models.detr.configuration_detr import DetrConfig
 from transformers.models.detr.modeling_detr import (
     DetrPreTrainedModel,
@@ -18,9 +18,9 @@ class DETRconnector(nn.Module):
     def __init__(self, config):
         """
         Args:
-            config: 사용자 정의 설정 객체
+            config: Custom configuration object
                 (vision_width, bert_hidden_size, bert_num_hidden_layers,
-                 bert_num_attention_heads, bert_intermediate_size, hidden_size_projector 등)
+                 bert_num_attention_heads, bert_intermediate_size, hidden_size_projector, etc.)
         """
         super().__init__()
         self.config = config
@@ -54,8 +54,8 @@ class DETRconnector(nn.Module):
         """
         Args:
             image_features: (bs, num_tokens, vision_width)
-                - 예) (bs, 576, 768)
-                - 여기서 576 = 24 x 24 patch 수
+                - e.g., (bs, 576, 768)
+                - 576 denotes a 24 x 24 patch grid
         Returns:
             (bs, num_tokens, hidden_size_projector)
         """
@@ -97,7 +97,7 @@ class DETRconnector(nn.Module):
         else:
             queries = object_query_init
             query_position_embeddings = object_query_pos
-            decoder_attention_mask = None  # 혹은 전부 True
+            decoder_attention_mask = None
 
         decoder_outputs = self.decoder(
             inputs_embeds=queries, #  torch.Size([32, 122, 1024])
@@ -227,7 +227,7 @@ class FP_DETRconnector(nn.Module):
             # Generate position embeddings for the concatenated queries
             query_position_embeddings = torch.cat([
                 object_query_pos,
-                torch.zeros_like(pre_captions_embeds)  # 캡션 쪽은 learnable pos emb가 없다면 0
+                torch.zeros_like(pre_captions_embeds)
             ], dim=1)
 
             # Create a combined attention mask for object queries and pre-captions

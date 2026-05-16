@@ -711,8 +711,6 @@ def preprocess_opt(
                 instruction_len = len(tokenizer_image_token(parts[0], tokenizer)) - 2 
                 # "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: <image>\nWhat is this? ASSISTANT: People stand facing a person sitting on a horse."
                 # tokenizer_image_token >> [2, 250, 7359, 227, 10, 10691, 3018, 8, 41, 7350, 2316, 3167, 4, 20, 3167, 2029, 7163, 6, 4271, 6, 8, 24908, 5274, 7, 5, 3018, 18, 1142, 4, 382, 2076, 35, 1437, -200,   50118, 2264, 16, 42, 116, 20860, 11595, 11088, 35, 1806, 1413, 2114, 10, 621, 2828, 15, 10, 5253, 4]
-                # "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: <image>\nWhat is this? ASSISTANT: "
-                # tokenizer_image_token >> [2, 250, 7359, 227, 10, 10691, 3018, 8, 41, 7350, 2316, 3167, 4, 20, 3167, 2029, 7163, 6, 4271, 6, 8, 24908, 5274, 7, 5, 3018, 18, 1142, 4, 382, 2076, 35, 1437, -200,   50118, 2264, 16, 42, 116, 20860, 11595, 11088, 35, 1437] // 이떄, " "=1437, People=4763, " ASSISTANT: " = [2, 20860, 11595, 11088, 35, 1437], "ASSISTANT: People stand" = [2, 17042, 11595, 11088, 35, 1806, 1413]
             else:
                 round_len = len(tokenizer(rou).input_ids)
                 instruction_len = len(tokenizer(parts[0]).input_ids) - 2

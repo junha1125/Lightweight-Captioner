@@ -37,7 +37,7 @@ from pycocotools.coco import COCO
 
 ds_collections = {
     'coco': {
-        'test': './data_root/COCO/coco_karpathy_test_gt.json',
+        'test': './data_root/coco/coco_karpathy_test_gt.json',
     },
     'sharegpt': {
         'test': './data_root/sharegpt/sharegpt_dci_test_gt.json',
@@ -56,7 +56,7 @@ class ModelArguments:
 @dataclass
 class DataArguments:
     query: str = field(default=None)
-    data_path: str = field(default="./data_root/COCO/coco_test_datalist.json")
+    data_path: str = field(default="./data_root/coco/coco_karpathy_test_datalist.json")
     image_folder: str = field(default="./data_root/coco")
     is_multimodal: bool = True
     mm_use_im_start_end: bool = field(default=False)

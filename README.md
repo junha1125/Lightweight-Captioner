@@ -1,10 +1,6 @@
-# MM-SeR: Multimodal Self-Refinement for Lightweight Image Captioning
+# Lightweight Image Captioning
 
 This repository contains the lightweight captioner training and evaluation code used in our experiments. The finetuned weights and conversation-formatted JSON files are shared via this [Google Drive link](https://drive.google.com/drive/folders/1s6U1bldf3YCkrmCbbbJ5Sx4JHINqECxu?usp=sharing).
-
-## Scope
-
-This code release focuses on the lightweight captioner. The self-refinement module described in the paper is outside the scope of this public code release. For readers interested in building a comparable refinement pipeline, the procedure can be implemented from the paper description, and [Visual-CoT](https://github.com/deepcs233/Visual-CoT) provides a related reference for self-refinement-style implementations.
 
 ## 📦 Installation
 
@@ -127,6 +123,10 @@ python llava/eval/model_caption.py \
     --batch_size 16 \
     --version opt
 ```
+
+## Scope
+
+This code release focuses on the lightweight captioner. For readers interested in building a refinement pipeline, the procedure can be implemented from the paper description, and [Visual-CoT](https://github.com/deepcs233/Visual-CoT) provides a related reference for self-refinement-style implementations.
 
 ## 📄 License
 
